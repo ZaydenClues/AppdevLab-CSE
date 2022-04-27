@@ -1,0 +1,55 @@
+.bg {
+    height: 100vh;
+    background-size: cover;
+    background-image: url('../img/bg2.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+	text-decoration: none;
+}
+
+fieldset{
+  border: 0;
+}
+
+a:visited{
+	text-decoration: none;
+}
+
+.form{
+  max-width: 500px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 15px;
+}
+
+.head{
+  font-family: 'Roboto', sans-serif;
+  color: rgb(255, 255, 255);
+	text-align: center;
+  background-color: #611092;
+}
+
+.card-panel{
+  max-width: 500px;
+}
+
+
+
+tbody {
+  display:block;
+  height: 435px;
+  overflow:auto;
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+thead {
+  width: calc( 100% - 1em )
+}
+table {
+  width:100%;
+}
