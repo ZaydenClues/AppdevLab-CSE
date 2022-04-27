@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script type="text/javascript">
+
+            function display(){
+              let ajaxRequest = new XMLHttpRequest();
+              ajaxRequest.onreadystatechange = function(){
+                if(ajaxRequest.readyState == 4){
+                  let display = document.getElementById("rows");
+                  display.innerHTML = ajaxRequest.responseText;
+                }
+              }
+
+              ajaxRequest.open("GET","server.php" + '?list=1');
+              ajaxRequest.send();
+            }
+
+            function handleChange(checkbox){
+              if(checkbox.checked){
+                console.log(checkbox.id + " is on");
+                ajaxReq = new XMLHttpRequest();
+                let data = '?event=' + checkbox.name + '&flag=1';
+                ajaxReq.onreadystatechange = function(){
+                  if(ajaxReq.readyState == 4){
+                    let eventfee = parseInt(JSON.parse(ajaxReq.responseText));
+                    console.log(eventfee);
+                    let fees = parseInt(document.getElementById("fees").value);
+                    fees += eventfee;
+                    document.getElementById("fees").value = fees;
+                  }
+                }
+                ajaxReq.open("GET", "server.php" + data, true);
+                ajaxReq.send();
+
+              } else{
+                console.log(checkbox.id + " is off");
+                ajaxReq = new XMLHttpRequest();
+                let data = '?event=' + checkbox.name + '&flag=1';
+                ajaxReq.onreadystatechange = function(){
+                  if(ajaxReq.readyState == 4){
+                    let eventfee = parseInt(JSON.parse(ajaxReq.responseText));
+                    console.log(eventfee);
+                    let fees = parseInt(document.getElementById("fees").value);
+                    fees -= eventfee;
+                    document.getElementById("fees").value = fees;
+                  }
+                }
+                ajaxReq.open("GET", "server.php" + data, true);
+                ajaxReq.send();
+              }
+            }
+
+            function edit(rollno){
+              let ajaxRequest = new XMLHttpRequest();
+              ajaxRequest.onreadystatechange = function(){
+                if(ajaxRequest.readyState == 4){
+                  let response = JSON.parse(ajaxRequest.responseText);
+                  console.log(response);
+                  document.getElementById("addev").reset();
+                  document.getElementById("name").value = response[0][0];
+                  document.getElementById("rollno").value = response[0][1];
+                  document.getElementById("course").value = response[0][2];
+                  document.getElementById("fees").value = response[0][3];
+                  const arr = response[1][0].split(",");
+                  for(let i = 0; i < arr.length; i++){
+                    let event = arr[i];
+                    if(event == "Event A"){
+                      document.getElementById("a").checked = true;
+                    }
+                    else if(event == "Event B"){
+                      document.getElementById("b").checked = true;
+                    }
+                    else if(event == "Event C"){
+                      document.getElementById("c").checked = true;
+                    }
+                    else{
+                      document.getElementById("d").checked = true;
+                    }
+                  }
+                }
+              }
+
+              ajaxRequest.open("GET","server.php" + '?auto=1' + '&rollno=' + rollno);
+              ajaxRequest.send();
+            }
+
+            function del(rollno){
+              let ajaxRequest = new XMLHttpRequest();
+              ajaxRequest.onreadystatechange = function(){
+                if(ajaxRequest.readyState == 4){
+                  display();
+                  }
+                }
+              ajaxRequest.open("GET","server.php" + '?del=1' + '&rollno=' + rollno);
+              ajaxRequest.send();
+            }
+
+            function validate(){
+              let name = document.getElementById("name").value;
+              let rollno = document.getElementById("rollno").value;
+              let course = document.getElementById("course").value;
+              let fees = document.getElementById("fees").value;
+
+              if(!name.length || !rollno.length || !course.length || !fees.length){
+                alert("Please fill all details");
+                return;
+              }
+              let eventChecked = [];
+              let eventa = document.getElementById("a");
+              if(eventa.checked){
+                eventChecked.push("Event A");
+              }
+              let eventb = document.getElementById("b");
+              if(eventb.checked){
+                eventChecked.push("Event B");
+              }
+              let eventc = document.getElementById("c");
+              if(eventc.checked){
+                eventChecked.push("Event C");
+              }
+              let eventd = document.getElementById("d");
+              if(eventd.checked){
+                eventChecked.push("Event D");
+              }
+
+              if(!eventChecked.length){
+                alert("Please select an event");
+                return;
+              }
+
+              let data = {name: name, rollno : rollno, course: course, events: eventChecked, flag: 1};
+              $.ajax({
+                type: "POST",
+                url: "server.php",
+                data: data,
+                success: function(response){
+                  alert(response);
+                }
+              });
+
+              display();
+
+              // ajaxRequest.onreadystatechange = function(){
+              //   if(ajaxRequest.readyState == 4)
+              //     console.log(ajaxRequest.responseText);
+              // }
+              // let dataString = '?name=' + name + '&rollno=' + rollno + '&course=' + course + '&eventa=' + eventa.name + '&eventb=' + eventb.name + '&eventc' + eventc.name + '&eventd=' + eventd.name + '&flag=1' + '&fees=' + fees;
+              //
+              // ajaxRequest.open("GET", "server.php" + dataString, true);
+              // ajaxRequest.send();
+            }
+    </script>
+  </head>
+
+  <body onload="display()" class="bg">
+    <div class="row">
+      <div class="col s12 head">
+        <h5>Register for events to participate</h5>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+             <div class="col s12 m4 ">
+               <div class="card-panel">
+                 <form id="addev" class="form" action="index.html" method="post" autocomplete="off">
+                   <label for="name">Name : </label>
+                   <input id="name" type="text" name="name" placeholder="Enter your name"><br>
+                   <label for="rollno">Roll No : </label>
+                   <input id="rollno" type="number" name="rollno" placeholder="Enter your roll no"><br>
+                   <label for="course">Course : </label>
+                   <input id="course" type="text" name="course" placeholder="Enter your course"><br>
+                   <label for="">Events : </label><br>
+                   <div class="row">
+                     <div class="col">
+                       <label>
+                         <input id="a" name="Event A" type="checkbox" onchange='handleChange(this);'/>
+                         <span>Event A</span>
+                       </label>
+                     </div>
+                     <div class="col">
+                       <label>
+                         <input id="c" name="Event C" type="checkbox" onchange='handleChange(this);'/>
+                         <span>Event C</span>
+                       </label>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="col">
+                       <label>
+                         <input id="b" name="Event B" type="checkbox" onchange='handleChange(this);'/>
+                         <span>Event B</span>
+                       </label>
+                     </div>
+                     <div class="col">
+                       <label>
+                         <input id="d" name="Event D" type="checkbox" onchange='handleChange(this);'/>
+                         <span>Event D</span>
+                       </label>
+                     </div>
+                   </div>
+                   <label for="fees">Fees : </label>
+                   <input disabled id="fees" type="text" name="events" value="0"><br><br>
+                   <div align="center">
+                     <button onclick="validate()" class="btn waves-effect waves-light" type="button" name="button">ADD</button>
+                     <button class="btn waves-effect waves-light" type="reset" name="button">CLEAR</button>
+                   </div>
+                 </form>
+               </div>
+              </div>
+              <div class="col s8">
+                <div class="card-panel">
+                  <table class="highlight centered table">
+                     <thead>
+                       <tr>
+                           <th>Name</th>
+                           <th>Roll No</th>
+                           <th>Course</th>
+                           <th>Events</th>
+                           <th>Fees</th>
+                           <th>Edit/Delete</th>
+                       </tr>
+                     </thead>
+                     <tbody id="rows">
+                     </tbody>
+                   </table>
+                </div>
+               </div>
+            </div>
+    </div>
+    <div class="head">
+    </div>
+  </body>
+</html>
