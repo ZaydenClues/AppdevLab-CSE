@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".RegisterFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Account"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="25dp"
+            android:textColor="@color/pinkish"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="25dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Username"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Account Holder Name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/accountno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Account No."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/branchDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Branch Details"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ifsc_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="IFSC Code"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="270dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Phone No."/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

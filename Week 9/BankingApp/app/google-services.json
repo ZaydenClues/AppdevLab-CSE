@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "126207875268",
+    "project_id": "bankapp-aa2ba",
+    "storage_bucket": "bankapp-aa2ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126207875268:android:7f118bf88a3aabf0059191",
+        "android_client_info": {
+          "package_name": "com.example.bankingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126207875268-b9aog7c9e0nrebssknbibsduh1ae4uou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bankingapp",
+            "certificate_hash": "52fe5934155a433c8990dac899465d40314bf79c"
+          }
+        },
+        {
+          "client_id": "126207875268-s3rmsvegafnitqss2jkhkcicj93q0tgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9xpKi9LUNjDvyxPvmHAcqVfrM2pAbaXQ"
+        }
+      ],
+      "": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126207875268-s3rmsvegafnitqss2jkhkcicj93q0tgv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
