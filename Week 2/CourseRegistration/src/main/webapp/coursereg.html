@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style/style.css">
+<script>
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}​
+</script>
+<title>Course Registration</title>
+</head>
+<body>
+    <div class="login">
+        <div class="form">
+            <form name="myform" autocomplete="off" method="post" action="CourseReg" onSubmit="return validateform()">
+                <h1 align="center">Course Registration</h1>
+                <p>Username</p>
+                <input name="username" type="text" placeholder="Enter your username">
+                <p>Roll No</p>
+                <input name="rollno" type="text" placeholder="Enter your roll no">
+                <p>Year</p>
+                <input name="year" type="text" placeholder="Enter year">
+                <p>Semester</p>
+                <input name="sem" type="text" placeholder="Enter semester">
+                <p>Course</p>
+                <input name="year" type="text" placeholder="Enter year">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

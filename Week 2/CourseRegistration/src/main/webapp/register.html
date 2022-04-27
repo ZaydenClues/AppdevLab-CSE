@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style/style.css">
+<script>
+        function validateform() {
+            let password = document.myform.password.value;
+            let cpassword = document.myform.confirmpassword.value;
+            if (password.length < 8) {
+                alert("Password must be atleast 8 characters long");
+                return false;
+            }
+            if (password != cpassword) {
+                alert("Passwords don't match");
+                return false;
+            }
+        }
+    </script>
+<title>User Registration</title>
+</head>
+<body>
+    <div class="login">
+        <div class="form">
+            <form name="myform" autocomplete="off" method="post" action="UserRegistration" onSubmit="return validateform()">
+                <h1 align="center">User Registration</h1>
+                <p>Username</p>
+                <input name="username" type="text" placeholder="Enter your username">
+                <p>Password</p>
+                <input name="password" type="password" placeholder="Enter your password">
+                <p>Confirm Password</p>
+                <input name="confirmpassword" type="password" placeholder="Confirm your password">
+                <button type="submit">Register</button>
+                <div align="center">
+                	<a href="login.html">Already have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
