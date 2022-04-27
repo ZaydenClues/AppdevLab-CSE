@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+    <link rel='stylesheet' href='style/style.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Week 6</title>
+    <script>
+        function disp(val){
+              console.log('inhere');
+              let ajaxRequest = new XMLHttpRequest();
+              ajaxRequest.onreadystatechange = function(){
+                if(ajaxRequest.readyState == 4){
+                  console.log(ajaxRequest.responseText);
+                  let display = document.getElementById('main');
+                  display.innerHTML = ajaxRequest.responseText;
+                }
+              }
+              ajaxRequest.open('GET','server.php' + '?flag=1' + '&val=' + val);
+              ajaxRequest.send();
+        }
+
+        function verifyPass(){
+          let ajaxRequest = new XMLHttpRequest();
+          let rollno = document.getElementById('rollno').value;
+          let password = document.getElementById('password').value;
+            ajaxRequest.onreadystatechange = function(){
+              if(ajaxRequest.readyState == 4){
+                if(ajaxRequest.responseText == 1){
+                  disp(0);
+                } else {
+                  alert(ajaxRequest.responseText);
+                }
+              }
+            }
+            ajaxRequest.open('GET','server.php' + '?rollno=' + rollno + '&flag=2' + '&password=' + password);
+            ajaxRequest.send();
+        }
+
+        function verifyOTP(){
+          let otp = document.getElementById('otp').value;
+          let action = 'verify_otp';
+          let data = { otp: otp, action: action };
+          $.ajax({
+            type: "POST",
+            url: "controller.php",
+            data: data,
+            success: function(response){
+              console.log(response);
+              if(response == 1){
+                disp(1);
+              } else {
+                alert(response);
+              }
+            }
+          });
+        }
+
+        function otp(){
+          let rollno = document.getElementById('rollno').value;
+          let action = 'get_otp';
+          let data = { rollno: rollno, action: action };
+          $.ajax({
+            type: "POST",
+            url: "controller.php",
+            data: data,
+            success: function(response){
+              console.log(response);
+              let display = document.getElementById('main');
+              display.innerHTML = response;
+            }
+          });
+        }
+
+        function save(){
+          let name = document.getElementById('name').value;
+          let fname = document.getElementById('fname').value;
+          let branch = document.getElementById('branch').value;
+          let year = document.getElementById('year').value;
+          let email = document.getElementById('email').value;
+          let address = document.getElementById('address').value;
+          if(!name.length || !fname.length || !branch.length || !year.length || !email.length || !address.length){
+            alert("Please fill all details");
+            exit();
+          }
+          if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+            alert("Enter valid email");
+            exit();
+          }
+          if(!/^[A-Za-z]+$/.test(name)){
+            alert("Enter valid name");
+            exit();
+          }
+          let data = {name: name, fname: fname, branch: branch, year: year, email: email, address: address, flag: 2};
+          console.log(data);
+              $.ajax({
+                type: "POST",
+                url: "server.php",
+                data: data,
+                success: function(response){
+                  if(response == 1){
+                    alert("Saved Details");
+                    location.reload();
+                  }
+                }
+              });
+        }
+    </script>
+</head>
+<body class='bg'>
+    <div class='row'>
+        <div class='col s12 head'>
+        <h5>User Information</h5>
+        </div>
+    </div>
+    <div class='container' align='center'>
+        <div id='main' class='card-panel p-5'>
+          <h5 align='center'>User Login</h5>
+          <form action='' class='form' autocomplete='off'>
+              <div class='input-field'>
+                  <input type='number' id='rollno' class='validate'/>
+                  <label class='active' for='rollno'>Roll No</label>
+              </div>
+              <div class='input-field'>
+                  <input type='password' id='password' class='validate'/>
+                  <label class='active' for='password'>Password</label>
+              </div>
+              <br><button onclick='verifyPass()' class='btn waves-effect waves-light' type='button' name='button'>LOGIN</button>
+              <br><br><a href="register.html">New User? Click here to register</a>
+          </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- <form>
+  <h5 align='center'>User Information</h5>
+  <input type='text' id='userid' value=$user->userid class='validate'/>
+  <label class='active' for='userid'>User ID</label>
+  <input type='text' id='rollno' value=$user->rollno class='validate'/>
+  <label class='active' for='rollno'>Roll No</label>
+  <input type='text' id='name' value=$user->name class='validate'/>
+  <label class='active' for='name'>Name</label>
+  <input type='text' id='fname' value=$user->father class='validate'/>
+  <label class='active' for='fname'>Father Name</label>
+  <input type='text' id='branch' value=$user->branch class='validate'/>
+  <label class='active' for='branch'>Branch</label>
+  <input type='text' id='year' value=$user->year class='validate'/>
+  <label class='active' for='year'>Year</label>
+  <input type='text' id='email' value=$user->email class='validate'/>
+  <label class='active' for='email'>E-Mail</label>
+  <input type='text' id='address' value=$user->address class='validate'/>
+  <label class='active' for='address'>Address</label>
+</form> -->
+
+<!-- <h5 align='center'>OTP has been sent to your mail</h5>
+<div class='input-field'>
+<input disabled type='text' id='otp' class='validate'/>
+<label class='active' for='otp'>OTP</label>
+</div> -->
