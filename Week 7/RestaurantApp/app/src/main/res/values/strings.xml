@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">RestaurantApp</string>
+    <string name="email">Enter your e-mail Address</string>
+    <string name="username">Enter your username</string>
+    <string name="password">Enter your password</string>
+    <string name="cpassword">Confirm your password</string>
+    <string-array name="food_type">
+        <item>Veg</item>
+        <item>Non-Veg</item>
+    </string-array>
+    <string-array name="drinks">
+        <item>Lemon Juice</item>
+        <item>Apple Juice</item>
+        <item>Grape Juice</item>
+        <item>Orange Juice</item>
+    </string-array>
+    <string-array name="veg_soups">
+        <item>Tomato Soup</item>
+        <item>Hot and Sour Soup</item>
+        <item>Sweet Corn Soup</item>
+    </string-array>
+    <string-array name="non_veg_soups">
+        <item>Tomato Soup</item>
+        <item>Hot and Sour Soup</item>
+        <item>Sweet Corn Soup</item>
+        <item>Chicken Manchow Soup</item>
+        <item>Chicken Lemon Soup</item>
+        <item>Crabmeat Soup</item>
+    </string-array>
+    <string-array name="veg_starters">
+        <item>Paneer Tikka</item>
+        <item>Aloo Tikki</item>
+        <item>French Fries</item>
+    </string-array>
+    <string-array name="non_veg_starters">
+        <item>Paneer Tikka</item>
+        <item>Aloo Tikki</item>
+        <item>French Fries</item>
+        <item>Fish Fingers</item>
+        <item>Chicken Lollipop</item>
+        <item>Chicken Kebab</item>
+    </string-array>
+    <string-array name="veg_main_dish">
+        <item>Veg Fried Rice</item>
+        <item>Veg Noodles</item>
+        <item>Roti</item>
+    </string-array>
+    <string-array name="nonveg_main_dish">
+        <item>Veg Fried Rice</item>
+        <item>Veg Noodles</item>
+        <item>Roti</item>
+        <item>Chicken Fried Rice</item>
+        <item>Chicken Noodles</item>
+    </string-array>
+    <string-array name="deserts">
+        <item>Vanilla Ice Cream</item>
+        <item>Choclate Ice Cream</item>
+    </string-array>
+</resources>

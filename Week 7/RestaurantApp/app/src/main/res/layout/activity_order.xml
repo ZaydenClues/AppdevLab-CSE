@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="Select Food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="32sp" />
+
+    <TableLayout
+
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Food Type"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/food_type"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Drinks"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/drinks"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Soups"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/soups"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Starters"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/starters"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Main Dish"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/maindish"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:text="Deserts"
+                android:padding="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26sp"
+                android:layout_column="1" />
+
+            <Spinner
+                android:id="@+id/deserts"
+                android:padding="15dp"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:textSize="26sp"
+                />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="Place Order" />
+</LinearLayout>
